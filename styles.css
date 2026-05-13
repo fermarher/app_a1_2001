@@ -1,0 +1,238 @@
+/* OPOSITAR · design tokens
+   ───────────────────────────────────────────────────────────
+   Editorial minimal + institutional Andalusian green.
+   Type: Source Serif 4 (display), IBM Plex Sans (UI), IBM Plex Mono (data).
+*/
+
+:root {
+  /* Paper & ink */
+  --paper: #faf7f2;
+  --paper-2: #f3efe6;
+  --card: #ffffff;
+  --ink: #1b1a17;
+  --ink-2: #6f6a60;
+  --ink-3: #a8a296;
+  --ink-4: #c9c3b6;
+  --rule: #e8e3d8;
+  --rule-soft: #efeae0;
+
+  /* Andalucía */
+  --green: #2b5f3f;
+  --green-deep: #1e4530;
+  --green-tint: #edf2ec;
+  --green-tint-2: #dbe5d8;
+  --green-ink: #1a3a26;
+
+  /* States */
+  --ochre: #b08436;     /* dudosa */
+  --ochre-tint: #f5ecd6;
+  --terra: #a04a36;     /* fallo */
+  --terra-tint: #f5e3dc;
+  --correct: var(--green);
+
+  /* Type */
+  --serif: "Source Serif 4", "Source Serif Pro", Georgia, serif;
+  --sans: "IBM Plex Sans", "Inter Tight", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+  letter-spacing: -0.005em;
+}
+
+/* ─── Typographic rhythm ─── */
+.serif { font-family: var(--serif); font-weight: 400; letter-spacing: -0.012em; }
+.mono { font-family: var(--mono); letter-spacing: 0; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.label-sm { font-size: 13px; color: var(--ink-2); letter-spacing: 0.01em; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+/* ─── Buttons ─── */
+.btn {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  padding: 10px 16px;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background .15s, border-color .15s, color .15s;
+  white-space: nowrap;
+}
+.btn:hover { border-color: var(--ink-3); }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn:disabled:hover { border-color: var(--rule); }
+.btn-primary {
+  background: var(--green);
+  color: #f3f0e8;
+  border-color: var(--green);
+}
+.btn-primary:hover { background: var(--green-deep); border-color: var(--green-deep); }
+.btn-ghost { background: transparent; border-color: transparent; color: var(--ink-2); }
+.btn-ghost:hover { color: var(--ink); background: var(--paper-2); }
+.btn-sm { padding: 7px 11px; font-size: 13px; }
+.btn-lg { padding: 14px 22px; font-size: 15.5px; }
+
+/* ─── Cards ─── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.card-flat { background: var(--card); border-top: 1px solid var(--rule); }
+
+/* ─── Tags ─── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-family: var(--mono);
+  letter-spacing: 0.04em;
+  padding: 3px 7px;
+  border-radius: 3px;
+  background: var(--paper-2);
+  color: var(--ink-2);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.tag-green { background: var(--green-tint); color: var(--green-deep); }
+.tag-ochre { background: var(--ochre-tint); color: var(--ochre); }
+.tag-terra { background: var(--terra-tint); color: var(--terra); }
+.tag-outline { background: transparent; border: 1px solid var(--rule); }
+
+/* ─── Dividers ─── */
+.hr { height: 1px; background: var(--rule); border: 0; margin: 0; }
+.hr-soft { height: 1px; background: var(--rule-soft); border: 0; margin: 0; }
+
+/* ─── Placeholders for charts ─── */
+.bar-track { height: 4px; background: var(--paper-2); border-radius: 2px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--green); }
+
+/* ─── Quiet scrollbars ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: var(--ink-4); border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* ─── Focus ring ─── */
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+/* ─── Andalusian flag stripe (subtle) ─── */
+.andalucia-stripe {
+  height: 3px;
+  background: linear-gradient(to bottom,
+    var(--green) 0 33.33%,
+    #f3f0e8 33.33% 66.66%,
+    var(--green) 66.66% 100%);
+}
+
+/* ─── App shell layout ─── */
+.shell { display: flex; min-height: 100vh; }
+.shell-main { flex: 1; min-width: 0; }
+
+.sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--rule);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+  height: 100vh;
+  overflow-y: auto;
+}
+.sidebar-group { display: flex; flex-direction: column; gap: 2px; }
+.sidebar-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 10px;
+  border-radius: 4px;
+  color: var(--ink-2);
+  font-size: 14.5px;
+  font-weight: 400;
+  cursor: pointer;
+  border: 0; background: transparent; width: 100%; text-align: left;
+  font-family: var(--sans);
+  transition: background .12s, color .12s;
+}
+.sidebar-item:hover { color: var(--ink); background: var(--paper-2); }
+.sidebar-item.active { color: var(--ink); background: var(--paper-2); font-weight: 500; }
+
+.sidebar-sub {
+  display: flex; align-items: center; gap: 10px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  color: var(--ink-2);
+  font-size: 13.5px;
+  cursor: pointer;
+  border: 0; background: transparent; width: 100%; text-align: left;
+  font-family: var(--sans);
+}
+.sidebar-sub:hover { color: var(--ink); }
+
+/* ─── Mobile shell (bottom tab bar) ─── */
+.mobile-header {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--paper);
+  padding: 12px 20px 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.mobile-content {
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
+.tab-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 20;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rule);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  padding: 10px 0 calc(10px + env(safe-area-inset-bottom, 0px));
+}
+.tab {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  color: var(--ink-3);
+  border: 0; background: transparent; cursor: pointer;
+  font-family: var(--sans); padding: 4px 0;
+  font-size: 12px;
+}
+.tab.active { color: var(--green); font-weight: 500; }
+
+/* ─── Responsive helpers ─── */
+.only-desktop { display: initial; }
+.only-mobile { display: none; }
+@media (max-width: 900px) {
+  .only-desktop { display: none; }
+  .only-mobile { display: initial; }
+}
+
+/* Limit prose width on wide screens for editorial feel */
+.prose-narrow { max-width: 720px; margin-left: auto; margin-right: auto; }
